@@ -21,8 +21,9 @@ const Header = () => {
           <a href="#Community">Community</a>
         </nav>
         <div className="buttons">
+          <button className="login">Log in</button>
+
           <GetStartedButton />
-          <button className="login">Login</button>
         </div>
       </div>
     </header>

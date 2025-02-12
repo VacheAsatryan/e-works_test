@@ -6,7 +6,7 @@ const GetStartedButton = () => {
     <div className="button-wrapper">
       <button className="animated-button">
         Get started for
-        <span style={{ fontWeight: "800", color: "black" }}>free</span>
+        <span className="free">free</span>
         <ArrowRightSvg fill="black" />
       </button>
       <div className="border-top-dot"></div>

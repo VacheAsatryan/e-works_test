@@ -113,6 +113,11 @@
     opacity: 0.5;
     animation: rotate-border-bottom 2s linear infinite;
   }
+  .free{
+    font-family: 'TT interphases Pro Bold';
+
+
+  }
   
   
   @keyframes rotate-border-bottom {

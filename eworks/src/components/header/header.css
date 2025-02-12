@@ -73,6 +73,11 @@
 .login {
   background: transparent;
   color: #007bff;
+  font-family:TT Interphases Pro ;
+  color: white;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 400;
 }
 
 .dropdown {

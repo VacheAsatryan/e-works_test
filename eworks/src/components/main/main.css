@@ -21,8 +21,9 @@
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
     perspective: 1500px; 
-    padding: 0px;
+    padding:0px;
     background: transparent;
+    overflow: hidden;
 
 }
 .slider-containerReverse {
@@ -32,7 +33,6 @@
     transform: matrix(1, -0.6, 0.9, 0.6, 1, 1) ;
     width: 1609px; 
     background: #fff; 
-    overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     perspective: 1500px; 
     padding: 0px;
