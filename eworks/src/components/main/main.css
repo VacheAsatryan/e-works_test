@@ -1,0 +1,162 @@
+.main{
+    width: 1920px;
+    height: 850px !important;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.557);
+    backdrop-filter: blur(8px);
+    background-image: url('../../assets//images/Group.png');
+    display: flex;
+    overflow: hidden;
+    padding-left: 320px;
+    padding-top: 196px;
+}
+
+.slider-container {
+    position: absolute; /* Устанавливаем абсолютное позиционирование */
+    top: 400px; /* Центрируем слайдер по вертикали */
+    right: -200px; /* Размещаем слайдер в правом углу */
+    transform: matrix(1, -0.5, 1, 0.6, 1, 1) ;
+    width: 1609px; /* Ширина контейнера */
+    background: #fff; /* Можно выбрать свой фон */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Тень для эффекта глубины */
+    perspective: 1500px; /* Добавляем перспективу для 3D-эффекта */
+    padding: 0px;
+    background: transparent;
+
+}
+.slider-containerReverse {
+    position: absolute; /* Устанавливаем абсолютное позиционирование */
+    top: 510px; /* Центрируем слайдер по вертикали */
+    right: -400px; /* Размещаем слайдер в правом углу */
+    transform: matrix(1, -0.5, 1, 0.6, 1, 1);
+    width: 1609px; /* Ширина контейнера */
+    background: #fff; /* Можно выбрать свой фон */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Тень для эффекта глубины */
+    perspective: 1500px; /* Добавляем перспективу для 3D-эффекта */
+    padding: 0px;
+    background: transparent;
+
+}
+  
+ .description{
+    color: #fff;
+    font-size: 20px;
+    line-height: 25px;
+    font-family: TT Interphases Pro;
+ }
+  .text-video{
+    width: 566px;
+  }
+  @keyframes revealText {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+  
+
+  
+  .text-container {
+    display: inline-block;
+    font-size: 52px;
+    font-weight: bold;
+    width: 100%;
+    color: white;
+    position: relative;
+    text-align: start;
+  }
+  
+  .text {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    filter: blur(10px);
+    animation: fadeInOutBlur 7s infinite; /* Устанавливаем цикл анимации в 7 секунд */
+  }
+  
+  /* Задержка анимации для каждого текста */
+  .text:nth-child(1) { animation-delay: 0s; }
+  .text:nth-child(2) { animation-delay: 4s; }
+  .text:nth-child(3) { animation-delay: 9s; }
+  /* 
+  .text:nth-child(4) { animation-delay: 13.5s; }
+  .text:nth-child(5) { animation-delay: 18s; }
+  .text:nth-child(6) { animation-delay: 22.5s; }
+  .text:nth-child(7) { animation-delay: 27s; }
+  .text:nth-child(8) { animation-delay: 31.5s; }
+  .text:nth-child(9) { animation-delay: 36s; } */
+  
+  @keyframes fadeInOutBlur {
+    0% { opacity: 0; filter: blur(10px); } /* Начинаем с невидимого и размытого текста */
+    20% { opacity: 1; filter: blur(0); } /* Текст становится видимым и четким */
+    50% { opacity: 1; filter: blur(0); } /* Текст становится видимым и четким */
+    70% { opacity: 1; filter: blur(10px); } /* Текст остаётся четким *//* Текст начинает исчезать */
+    100% { opacity: 0; filter: blur(10px); } /* Текст полностью исчезает */
+  }
+  .description_container{
+    width: fit-content;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .emoji{
+    width: 25px;
+    height: 37px;
+    animation: fastShake 0.8s infinite; /* Добавлено: применяем анимацию "bounce" */
+  }
+  @keyframes fastShake {
+    0% {
+        transform: rotateZ(9deg);
+    }
+    25% {
+        transform: rotateZ(-20deg);
+    }
+    50% {
+        transform: rotateZ(9deg);
+    }
+    75% {
+        transform: rotateZ(-20deg);
+    }
+    100% {
+        transform: rotateZ(9deg);
+    }
+}
+.engagement{
+  font-family: 'TT Interphases Pro';
+  color: white;
+  font-size: 20px;
+  line-height: 28.8px;
+  max-width: 634px;
+  margin-top: 18px;
+  font-weight: 400;
+}
+.button_box{
+  display: flex;
+  gap: 27px;
+  padding-top: 40px;
+}
+.but{
+  padding: 15px 20px;
+  font-family: 'TT Interphases Pro';
+  border-radius: 60px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.started{
+  background: rgba(70, 203, 25, 1);
+  color: black;
+  border: none;
+}
+.browse{
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}

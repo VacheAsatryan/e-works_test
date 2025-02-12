@@ -1,0 +1,9 @@
+.card{
+    width: 167px;
+    height:206px;
+    border-radius: 12px;
+    transform: rotate(90deg);
+}
+img{
+    width: 100%;
+}
