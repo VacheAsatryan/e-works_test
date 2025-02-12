@@ -1,19 +1,15 @@
-/* Обертка для бесшовной прокрутки */
 .slider-wrapper {
     width: 100%;
-    overflow: hidden; /* Скрываем выходящие элементы */
+    overflow: hidden; 
     position: relative;
     background: transparent;
 }
 
-/* Бесконечная прокрутка */
 .slider-track {
     display: flex;
-    width: calc(250px * 7); /* 7 элементов с шириной 250px */
+    width: calc(250px * 7);
     animation: scroll 15s linear infinite;
 }
-
-/* Индивидуальные слайды */
 .slider-item {
     flex-shrink: 0;
     width: 220px;
@@ -22,12 +18,11 @@
     height: fit-content;
 }
 
-/* Анимация бесшовного движения */
 @keyframes scroll {
     from {
         transform: translateX(0);
     }
     to {
-        transform: translateX(-100%); /* Двигаем на всю ширину (7 элементов) */
+        transform: translateX(-100%); 
     }
 }

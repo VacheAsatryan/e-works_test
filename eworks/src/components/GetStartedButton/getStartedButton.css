@@ -14,7 +14,7 @@
   background-color: #40FF00;
     color: black;
     padding: 16px 18px;
-    border: 2px solid #28a745; /* Граница, по которой движется точка */
+    border: 2px solid #28a745;
     border-radius: 56px;
     cursor: pointer;
     position: relative;

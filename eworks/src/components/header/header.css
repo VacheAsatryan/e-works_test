@@ -1,15 +1,15 @@
 .header {
   width: 100%;
-  min-width: 1920px; /* Минимальная ширина 1920px */
+  min-width: 1920px; 
   margin: 0 auto;
   position: sticky;
   top: 0;
   background: #0000009b;
   display: grid;
-  grid-template-columns: 1fr auto auto; /* Лого, навигация, кнопки */
+  grid-template-columns: 1fr auto auto; 
   align-items: center;
   justify-content: center;
-  padding: 10px 20px; /* Отступы внутри */
+  padding: 10px 20px;
   padding: 28px 0px;
   backdrop-filter: blur(8px);
   z-index: 999;
@@ -17,9 +17,9 @@
 
 .container {
   display: grid;
-  grid-template-columns: auto 1fr auto; /* Лого слева, контент справа и кнопки */
+  grid-template-columns: auto 1fr auto; 
   width: 100%;
-  max-width: 1283px; /* Максимальная ширина */
+  max-width: 1283px; 
   gap: 20px;
   align-items: center;
   margin: 0 auto ;
