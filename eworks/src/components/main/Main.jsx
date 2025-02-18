@@ -1,39 +1,49 @@
 import SliderComponent from "../sliderComponent/SliderComponent";
 import "./main.css";
-import sansplexImage from "../../assets/images/sansplexImage.png";
-import edumarkImage from "../../assets/images/edumarkImage.png";
-import earthugardiansImage from "../../assets/images/earthugardiansImage.png";
-import enjoImage from "../../assets/images/enjoImage.png";
-import collideImage from "../../assets/images/collideImage.png";
-import eventquestImage from "../../assets/images/eventquestImage.png";
-import jobFinderImage from "../../assets/images/jobFinderImage.png";
-import textVideo from "../../assets/videos/textVideo.mp4";
+
 // import MorphingTextComponent from "../morphText/MorphTextComponent";
 // import { MetalHandSvg } from "../../assets/icons/metalHand";
 import emoji from "../../assets/images/Emoji.png";
+import backgroundImage from "../../assets/images/Group.png";
 import { ArrowRightSvg } from "../../assets/icons/arrowRight";
+import styled from "styled-components";
+import BothSliderComponent from "../bothSlidersComponent/BothSliderComponent";
+import AutoPlay from "../sliderComponent/SliderComponent";
+
+const MainSection = styled.div`
+  max-width: 1920px;
+  width: 100%;
+  height: 850px !important;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.557);
+  backdrop-filter: blur(8px);
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(8px);
+  display: flex;
+  overflow: hidden;
+  padding-top: 196px;
+  position: relative;
+`;
 
 const Main = () => {
-  const sliderArray = [
-    sansplexImage,
-    edumarkImage,
-    earthugardiansImage,
-    enjoImage,
-    collideImage,
-    eventquestImage,
-    jobFinderImage,
-  ];
   return (
-    <div className="main">
-      <div style={{ width: "100%" }}>
+    <MainSection>
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1283px",
+          margin: "0 auto",
+          zIndex: 999,
+        }}
+      >
         <div className="description_container">
           <h3 className="description">Create community sites, code-free</h3>
           <img className="emoji" src={emoji} alt="emojy" />
         </div>
+        {/* <MorphingTextComponent /> */}
 
-        <video className="text-video" autoPlay muted loop playsInline>
-          <source src={textVideo} type="video/mp4" />
-        </video>
         <h3 className="engagement">
           The most versatile, and feature-rich engagement platform.Browse
           beautifully designed templates, effortlessly customize it to meet your
@@ -58,15 +68,15 @@ const Main = () => {
           <div className="text">directories</div>
           <div className="text">blog and publications</div>
         </div> */}
-        {/* <MorphingTextComponent /> */}
       </div>
-      <SliderComponent className="slider-container" sliderArray={sliderArray} />
-      <SliderComponent
+      <BothSliderComponent />
+
+      {/* <SliderComponent
         direction="left"
         className="slider-containerReverse"
         sliderArray={sliderArray}
-      />
-    </div>
+      /> */}
+    </MainSection>
   );
 };
 

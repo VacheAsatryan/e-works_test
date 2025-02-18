@@ -1,15 +1,4 @@
-.main{
-    width: 1920px;
-    height: 850px !important;
-    margin: 0 auto;
-    background-color: rgba(0, 0, 0, 0.557);
-    backdrop-filter: blur(8px);
-    background-image: url('../../assets//images/Group.png');
-    display: flex;
-    overflow: hidden;
-    padding-left: 320px;
-    padding-top: 196px;
-}
+
 
 .slider-container {
     position: absolute; 
@@ -24,7 +13,6 @@
     padding:0px;
     background: transparent;
     overflow: hidden;
-
 }
 .slider-containerReverse {
     position: absolute; 

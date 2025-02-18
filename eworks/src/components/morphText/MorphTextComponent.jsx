@@ -99,23 +99,11 @@ const MorphingTextComponent = () => {
   }, []); // Пустой массив зависимостей: запускается только один раз при монтировании компонента
 
   return (
-    <div style={{ background: "red" }}>
-      <div id="container" style={{ filter: "none" }}>
+    <div>
+      <div id="container" style={{ filter: "none", background: "red" }}>
         <span id="text1" ref={text1Ref}></span>
         <span id="text2" ref={text2Ref}></span>
       </div>
-
-      <svg id="filters">
-        <defs>
-          <filter id="threshold">
-            <feColorMatrix
-              in="SourceGraphic"
-              type="matrix"
-              values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 1 0"
-            />
-          </filter>
-        </defs>
-      </svg>
     </div>
   );
 };
