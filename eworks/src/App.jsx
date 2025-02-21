@@ -1,15 +1,9 @@
-import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import backgroundVideo from "./assets/videos/backgroundVideo.mp4";
-import SliderComponent from "./components/sliderComponent/SliderComponent";
 
 function App() {
-  useEffect(() => {
-    console.log("changed");
-  }, []);
-
   return (
     <div className="App">
       <div className="background-wrapper">

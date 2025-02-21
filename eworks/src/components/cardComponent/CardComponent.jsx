@@ -1,17 +1,21 @@
 /* eslint-disable react/prop-types */
-import "./cardComponent.css";
+import {
+  Card,
+  CardContainer,
+  CardImage,
+  CardReflection,
+} from "./cardComponent.styles";
 
 const CardComponent = ({ imageSrc }) => {
   return (
-    <div className="card-container">
-      <div className="card">
-        <img src={imageSrc} alt="Card Image" />
-      </div>
-      <div className="card-reflection">
-        <img src={imageSrc} alt="Card Reflection" />
-      </div>
-    </div>
+    <CardContainer>
+      <Card>
+        <CardImage src={imageSrc} alt="Card Image" />
+      </Card>
+      <CardReflection>
+        <CardImage src={imageSrc} alt="Card Reflection" />
+      </CardReflection>
+    </CardContainer>
   );
 };
-
 export default CardComponent;

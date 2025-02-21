@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import AutoPlay from "../sliderComponent/SliderComponent";
+import { media } from "../../assets/style/theme";
+media;
 
 const StyledDiv = styled.div`
   width: 100%;
@@ -8,14 +10,20 @@ const StyledDiv = styled.div`
   top: 57%;
   right: -15%;
   transform: rotate(-30deg) skewX(30deg);
-  border: 1px solid red;
+  ${media.tablet} {
+    top: 70%;
+  }
+  ${media.mobile} {
+    top: 20%;
+    left: -5%;
+  }
 `;
 
 const BothSliderComponent = () => {
   return (
     <StyledDiv>
-      <AutoPlay />
-      <AutoPlay />
+      <AutoPlay direction="left" />
+      <AutoPlay direction="right" />
     </StyledDiv>
   );
 };

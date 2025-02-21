@@ -1,12 +1,12 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
-// Анимация для бесконечной прокрутки
-const scroll = keyframes`
-  0% {
-    transform: translateX(0);
+// Функция для создания анимации с учетом направления
+const scroll = (direction) => keyframes`
+  from {
+    transform: translateX(${direction === "left" ? "0" : "-50%"});
   }
-  100% {
-    transform: translateX(calc(-250px * 7)); 
+  to {
+    transform: translateX(${direction === "left" ? "-50%" : "0"});
   }
 `;
 
@@ -14,29 +14,26 @@ const scroll = keyframes`
 export const SliderContainer = styled.div`
   width: 120%;
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   background: transparent;
-   transform: scale(0.8); 
+  transform: scale(0.8);
 `;
 
 export const SliderTrack = styled.div`
   display: flex;
-  animation: ${scroll} 15s linear infinite;
-  
-  &:hover {
-    animation-play-state: running; /* Гарантирует, что анимация продолжается при наведении */
-  }
+  width: max-content;
+  ${({ direction }) => css`
+    animation: ${scroll(direction)} 20s linear infinite;
+  `}
 `;
 
 export const Slide = styled.div`
   flex-shrink: 0;
-  width: 250px; /* Фиксированная ширина для слайдов */
-  height:180px;
-  margin: 0 2px; /* Отступ между слайдами */
-  transition: transform 0.3s;
+  width: 250px;
+  height: 180px;
+  margin: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  
 `;

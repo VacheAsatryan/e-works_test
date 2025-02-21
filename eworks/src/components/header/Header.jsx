@@ -1,76 +1,87 @@
-import styled from "styled-components";
+import { useState } from "react";
 import { ArrowDownSvg } from "../../assets/icons/arrowDown";
 import { BetterModeSvg } from "../../assets/icons/bettermode";
-import GetStartedButton from "../getStartedButton/GetStartedButton";
+import GetStartedButton from "../GetStartedButton/GetStartedButton";
+import {
+  Buttons,
+  Container,
+  LoginButton,
+  Logo,
+  LogoContainer,
+  Nav,
+  StyledHeader,
+  HamburgerButton,
+} from "./header.styles";
 
-const StyledHeader = styled.header`
-  width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  position: sticky;
-  top: 0;
-  background: #0000009b;
-  display: grid;
-  grid-template-columns: 1fr auto auto;
-  align-items: center;
-  justify-content: center;
-  padding: 28px 0px;
-  backdrop-filter: blur(8px);
-  z-index: 999;
-`;
+// SVG иконки для меню
+const MenuIcon = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M3 12H21"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3 6H21"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3 18H21"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  width: 100%;
-  max-width: 1283px;
-  gap: 20px;
-  align-items: center;
-  margin: 0 auto;
-`;
-
-const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 26px;
-`;
-
-const Logo = styled.div`
-  display: flex;
-  gap: 8px;
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  gap: 20px;
-  align-items: center;
-
-  a {
-    text-decoration: none;
-    color: #fff;
-    font-family: "TT Interphases Pro";
-  }
-`;
-
-const Buttons = styled.div`
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-`;
-
-const LoginButton = styled.button`
-  padding: 8px 16px;
-  border: none;
-  cursor: pointer;
-  background: transparent;
-  color: white;
-  font-family: "TT Interphases Pro";
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 400;
-`;
+const CloseIcon = () => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M18 6L6 18"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M6 6L18 18"
+      stroke="white"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <StyledHeader>
       <Container>
@@ -79,18 +90,32 @@ const Header = () => {
             <BetterModeSvg />
           </Logo>
         </LogoContainer>
-        <Nav>
-          <a href="#about">
+
+        <HamburgerButton onClick={toggleMenu}>
+          {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+        </HamburgerButton>
+
+        <Nav isOpen={isMenuOpen}>
+          <a href="#about" onClick={closeMenu}>
             Product <ArrowDownSvg />
           </a>
-          <a href="#about">Template</a>
-          <a href="#contact">Enterprise</a>
-          <a href="#Pricing">Pricing</a>
-          <a href="#Community">Community</a>
+          <a href="#about" onClick={closeMenu}>
+            Template
+          </a>
+          <a href="#contact" onClick={closeMenu}>
+            Enterprise
+          </a>
+          <a href="#Pricing" onClick={closeMenu}>
+            Pricing
+          </a>
+          <a href="#Community" onClick={closeMenu}>
+            Community
+          </a>
         </Nav>
-        <Buttons>
-          <LoginButton>Log in</LoginButton>
-          <GetStartedButton />
+
+        <Buttons isOpen={isMenuOpen}>
+          <LoginButton onClick={closeMenu}>Log in</LoginButton>
+          <GetStartedButton onClick={closeMenu} />
         </Buttons>
       </Container>
     </StyledHeader>

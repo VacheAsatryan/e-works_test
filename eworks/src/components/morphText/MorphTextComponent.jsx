@@ -1,111 +1,72 @@
-import { useEffect, useRef } from "react";
-import "./morphText.css";
+// components/MorphingTextWithBlobs.js
+import { useState, useEffect, useRef } from "react";
+import {
+  GooeyContainer,
+  TextExit,
+  TextEnter,
+  BoxSize,
+} from "./morphText.styles";
 
-const MorphingTextComponent = () => {
-  const text1Ref = useRef(null);
-  const text2Ref = useRef(null);
+const MorphingTextWithBlobs = () => {
+  const words = [
+    "Knowledge Bases",
+    "Help Centers",
+    "Client Portails",
+    "Directories",
+    "Listing Sites",
+    "Media Sharing Sites",
+    "Blogs and Publications",
+    "Social Networks",
+    "Support Communities",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(null);
+  const [width, setWidth] = useState(0);
+  const [prevWidth, setPrevWidth] = useState(0);
+  const textRef = useRef(null);
 
   useEffect(() => {
-    const elts = {
-      text1: text1Ref.current,
-      text2: text2Ref.current,
-    };
+    const interval = setInterval(() => {
+      setPrevIndex(currentIndex);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % words.length);
+    }, 4000);
 
-    const texts = [
-      "nowlage satisfaing",
-      "is",
-      "this",
-      "so",
-      "satisfying",
-      "to",
-      "watch?",
-    ];
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
-    const morphTime = 1;
-    const cooldownTime = 2;
+  useEffect(() => {
+    const observer = new ResizeObserver(([entry]) => {
+      const newWidth = entry.contentRect.width + 10;
 
-    let textIndex = texts.length - 1;
-    let time = new Date();
-    let morph = 0;
-    let cooldown = cooldownTime;
-
-    elts.text1.textContent = texts[textIndex % texts.length];
-    elts.text2.textContent = texts[(textIndex + 1) % texts.length];
-
-    const doMorph = () => {
-      morph -= cooldown;
-      cooldown = 0;
-
-      let fraction = morph / morphTime;
-
-      if (fraction > 1) {
-        cooldown = cooldownTime;
-        fraction = 1;
-      }
-
-      setMorph(fraction);
-    };
-
-    const setMorph = (fraction) => {
-      elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-      elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
-      fraction = 1 - fraction;
-      elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-      elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
-      elts.text1.textContent = texts[textIndex % texts.length];
-      elts.text2.textContent = texts[(textIndex + 1) % texts.length];
-    };
-
-    const doCooldown = () => {
-      morph = 0;
-
-      elts.text2.style.filter = "";
-      elts.text2.style.opacity = "100%";
-
-      elts.text1.style.filter = "";
-      elts.text1.style.opacity = "0%";
-    };
-
-    const animate = () => {
-      requestAnimationFrame(animate);
-
-      let newTime = new Date();
-      let shouldIncrementIndex = cooldown > 0;
-      let dt = (newTime - time) / 1000;
-      time = newTime;
-
-      cooldown -= dt;
-
-      if (cooldown <= 0) {
-        if (shouldIncrementIndex) {
-          textIndex++;
-        }
-
-        doMorph();
+      if (newWidth > prevWidth) {
+        setWidth(`${newWidth}px`);
+        setPrevWidth(newWidth);
       } else {
-        doCooldown();
+        setTimeout(() => {
+          setWidth(`${newWidth}px`);
+          setPrevWidth(newWidth);
+        }, 3000);
       }
-    };
+    });
 
-    animate();
+    if (textRef.current) {
+      observer.observe(textRef.current);
+    }
 
-    // Очистка эффекта, если компонент будет удален
-    return () => {
-      morph = 0;
-      cooldown = cooldownTime;
-    };
-  }, []); // Пустой массив зависимостей: запускается только один раз при монтировании компонента
+    return () => observer.disconnect();
+  }, [currentIndex, prevWidth]);
 
   return (
-    <div>
-      <div id="container" style={{ filter: "none", background: "red" }}>
-        <span id="text1" ref={text1Ref}></span>
-        <span id="text2" ref={text2Ref}></span>
-      </div>
-    </div>
+    <GooeyContainer width={width}>
+      {prevIndex !== null && (
+        <TextExit key={`prev-${prevIndex}`}>{words[prevIndex]}</TextExit>
+      )}
+      <TextEnter key={`curr-${currentIndex}`} ref={textRef}>
+        {words[currentIndex]}
+      </TextEnter>
+    </GooeyContainer>
   );
 };
 
-export default MorphingTextComponent;
+export default MorphingTextWithBlobs;

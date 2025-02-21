@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useRef } from "react";
 import CardComponent from "../cardComponent/CardComponent";
 import sansplexImage from "../../assets/images/sansplexImage.png";
 import edumarkImage from "../../assets/images/edumarkImage.png";
@@ -9,7 +10,7 @@ import eventquestImage from "../../assets/images/eventquestImage.png";
 import jobFinderImage from "../../assets/images/jobFinderImage.png";
 import { Slide, SliderContainer, SliderTrack } from "./slider.styles";
 
-function AutoPlay() {
+function AutoPlay({ direction = "left" }) {
   const sliderArray = [
     sansplexImage,
     edumarkImage,
@@ -54,7 +55,7 @@ function AutoPlay() {
 
   return (
     <SliderContainer>
-      <SliderTrack ref={trackRef}>
+      <SliderTrack ref={trackRef} direction={direction}>
         {infiniteSlides.map((el, index) => (
           <Slide key={index}>
             <CardComponent imageSrc={el} />
