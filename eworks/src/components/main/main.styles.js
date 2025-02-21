@@ -73,6 +73,10 @@ export const Engagement = styled.h3`
   max-width: 634px;
   margin-top: 18px;
   font-weight: 400;
+    ${media.tablet}{
+    font-size:14px;
+    margin-top:0
+  }
 `;
 
 export const ButtonBox = styled.div`
@@ -97,12 +101,18 @@ export const StartedButton = styled(Button)`
   background: rgba(70, 203, 25, 1);
   color: black;
   border: none;
+    ${media.tablet}{
+    font-size:10px;
+  }
 `;
 
 export const BrowseButton = styled(Button)`
   background: transparent;
   color: white;
   border: 1px solid white;
+  ${media.tablet}{
+    font-size:10px;
+  }
 `;
 export const TextContainer = styled.div`
   width: 100%;
@@ -111,6 +121,7 @@ export const TextContainer = styled.div`
   z-index: 999;
   
   ${media.desktop} {
-    padding: 20px
+    padding: 20px;
+    padding-top:110px;
   }
 `;

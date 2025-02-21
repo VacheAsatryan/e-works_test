@@ -11,6 +11,7 @@ import {
   Nav,
   StyledHeader,
   HamburgerButton,
+  MobileButtons,
 } from "./header.styles";
 
 // SVG иконки для меню
@@ -111,9 +112,13 @@ const Header = () => {
           <a href="#Community" onClick={closeMenu}>
             Community
           </a>
+          <MobileButtons>
+            <LoginButton onClick={closeMenu}>Log in</LoginButton>
+            <GetStartedButton onClick={closeMenu} />
+          </MobileButtons>
         </Nav>
 
-        <Buttons isOpen={isMenuOpen}>
+        <Buttons>
           <LoginButton onClick={closeMenu}>Log in</LoginButton>
           <GetStartedButton onClick={closeMenu} />
         </Buttons>

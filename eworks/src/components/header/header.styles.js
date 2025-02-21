@@ -64,7 +64,7 @@ export const Nav = styled.nav`
   }
 
   ${media.tablet} {
-    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+   display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
     position: fixed;
     top: 70px;
     left: 0;
@@ -73,7 +73,8 @@ export const Nav = styled.nav`
     backdrop-filter: blur(8px);
     flex-direction: column;
     padding: 20px;
-    
+    height: calc(100vh - 70px);
+
     a {
       font-size: 16px;
       padding: 10px 0;
@@ -91,6 +92,8 @@ export const Buttons = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-top:auto
+
   }
 `;
 
@@ -125,19 +128,29 @@ export const HamburgerButton = styled.button`
     order: 1;
   }
 `;
+export const MobileButtons = styled.div`
+display:none;
+${media.tablet}{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-export const MobileMenu = styled.div`
-  display: none;
+}
+`
+// export const MobileMenu = styled.div`
+//   display: none;
 
-  ${media.tablet} {
-    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-    flex-direction: column;
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: #0000009b;
-    backdrop-filter: blur(8px);
-    padding: 20px;
-  }
-`;
+//   ${media.tablet} {
+//     display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+//     flex-direction: column;
+//     position: fixed;
+//     top: 70px;
+//     left: 0;
+//     right: 0;
+//     background: #0000009b;
+//     backdrop-filter: blur(8px);
+//     padding: 20px;
+  
+//   }
+// `;

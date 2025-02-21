@@ -1,5 +1,6 @@
 // styles/MorphingText.styles.js
 import styled, { keyframes } from 'styled-components';
+import { media } from '../../assets/style/theme';
 
 const fadeIn = keyframes`
   0% {
@@ -46,6 +47,9 @@ export const GooeyContainer = styled.div`
   background: black;
   transition: width 0.2s ease-out;
   font-family: 'TT Interphases Pro Bold';
+  ${media.tablet}{
+    height:40px
+  }
 `;
 
 export const StyledHeading = styled.h1`
@@ -57,6 +61,9 @@ export const StyledHeading = styled.h1`
               -4px -4px 120px rgba(0, 0, 0, 0.6),
               -4px 4px 120px rgba(0, 0, 0, 0.4),
               4px -4px 120px rgba(0, 0, 0, 0.8);
+              ${media.tablet}{
+                font-size:30px;
+              }
 `;
 
 export const TextExit = styled(StyledHeading)`
