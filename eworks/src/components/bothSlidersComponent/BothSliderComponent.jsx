@@ -11,11 +11,15 @@ const StyledDiv = styled.div`
   right: -15%;
   transform: rotate(-30deg) skewX(30deg);
   ${media.tablet} {
-    top: 70%;
+    top: 90%;
   }
   ${media.mobile} {
     top: 20%;
     left: -5%;
+  }
+  ${media.largeDesktop} {
+    max-width: 900px;
+    overflow: hidden;
   }
 `;
 

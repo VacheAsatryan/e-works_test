@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import backgroundVideo from "./assets/videos/backgroundVideo.mp4";
+import SecondSection from "./components/secondSection/SecondSection";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
       <Header />
       <Main />
+      <SecondSection />
     </div>
   );
 }

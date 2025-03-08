@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowDownSvg } from "../../assets/icons/arrowDown";
 import { BetterModeSvg } from "../../assets/icons/bettermode";
 import GetStartedButton from "../GetStartedButton/GetStartedButton";
@@ -14,7 +14,6 @@ import {
   MobileButtons,
 } from "./header.styles";
 
-// SVG иконки для меню
 const MenuIcon = () => (
   <svg
     width="24"
@@ -75,6 +74,24 @@ const CloseIcon = () => (
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  console.log(windowSize, "window");
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -82,42 +99,55 @@ const Header = () => {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isMenuOpen]);
 
   return (
     <StyledHeader>
       <Container>
         <LogoContainer>
           <Logo>
-            <BetterModeSvg />
+            <a href="/">
+              <BetterModeSvg
+                height={windowSize > 1920 ? "40%" : "32px"}
+                width={windowSize > 1920 ? "40%" : "32px"}
+              />{" "}
+            </a>
+            <h1>bettermode</h1>
           </Logo>
+          <Nav isOpen={isMenuOpen}>
+            <ul>
+              <li href="#about" onClick={closeMenu}>
+                Product <ArrowDownSvg />
+              </li>
+              <li href="#about" onClick={closeMenu}>
+                Template
+              </li>
+              <li href="#contact" onClick={closeMenu}>
+                Enterprise
+              </li>
+              <li href="#Pricing" onClick={closeMenu}>
+                Pricing
+              </li>
+              <li href="#Community" onClick={closeMenu}>
+                Community
+              </li>
+            </ul>
+            <MobileButtons>
+              <LoginButton onClick={closeMenu}>Log in</LoginButton>
+              <GetStartedButton onClick={closeMenu} />
+            </MobileButtons>
+          </Nav>
         </LogoContainer>
 
         <HamburgerButton onClick={toggleMenu}>
           {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </HamburgerButton>
-
-        <Nav isOpen={isMenuOpen}>
-          <a href="#about" onClick={closeMenu}>
-            Product <ArrowDownSvg />
-          </a>
-          <a href="#about" onClick={closeMenu}>
-            Template
-          </a>
-          <a href="#contact" onClick={closeMenu}>
-            Enterprise
-          </a>
-          <a href="#Pricing" onClick={closeMenu}>
-            Pricing
-          </a>
-          <a href="#Community" onClick={closeMenu}>
-            Community
-          </a>
-          <MobileButtons>
-            <LoginButton onClick={closeMenu}>Log in</LoginButton>
-            <GetStartedButton onClick={closeMenu} />
-          </MobileButtons>
-        </Nav>
-
         <Buttons>
           <LoginButton onClick={closeMenu}>Log in</LoginButton>
           <GetStartedButton onClick={closeMenu} />

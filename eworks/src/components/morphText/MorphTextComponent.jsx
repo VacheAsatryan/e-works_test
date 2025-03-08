@@ -1,11 +1,6 @@
 // components/MorphingTextWithBlobs.js
 import { useState, useEffect, useRef } from "react";
-import {
-  GooeyContainer,
-  TextExit,
-  TextEnter,
-  BoxSize,
-} from "./morphText.styles";
+import { GooeyContainer, TextExit, TextEnter } from "./morphText.styles";
 
 const MorphingTextWithBlobs = () => {
   const words = [

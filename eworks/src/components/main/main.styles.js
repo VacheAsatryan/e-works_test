@@ -4,9 +4,8 @@ import { media } from "../../assets/style/theme";
 
 
 export const MainSection = styled.div`
-  max-width: 1920px;
   width: 100%;
-  height: 850px !important;
+  height: 847px;
   margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.557);
   backdrop-filter: blur(8px);
@@ -15,15 +14,15 @@ export const MainSection = styled.div`
   background-position: center;
   display: flex;
   overflow: hidden;
-  padding-top: 196px;
-  position: relative;
    ${media.tablet} {
-    padding-top: 196px;
     padding:0 20px;
     }
 
   ${media.mobile} {
 
+  }
+  ${media.largeDesktop}{
+    height:70vh;
   }
 `;
 
@@ -116,12 +115,17 @@ export const BrowseButton = styled(Button)`
 `;
 export const TextContainer = styled.div`
   width: 100%;
-  max-width: 1283px;
   margin: 0 auto;
   z-index: 999;
-  
-  ${media.desktop} {
-    padding: 20px;
-    padding-top:110px;
+  margin-top:23vh;
+  margin-left:20px;
+  width:fit-content;
+  height:fit-content;
+  ${media.tablet} {
+  backdrop-filter:blur(10px)
+
+  }
+  ${media.largeDesktop}{
+  margin-left:18%;
   }
 `;

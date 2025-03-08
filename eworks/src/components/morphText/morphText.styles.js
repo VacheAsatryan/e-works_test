@@ -33,7 +33,7 @@ const fadeOut = keyframes`
 `;
 
 export const GooeyContainer = styled.div`
-  margin: 0;
+  margin-top: 10px;
   padding: 0;
   line-height: 0px;
   overflow: hidden;
@@ -76,6 +76,5 @@ export const TextEnter = styled(StyledHeading)`
 
 export const BoxSize = styled.span`
   font-size: 51px;
-  background: red;
   font-family: 'TT Interphases Pro Bold';
 `;

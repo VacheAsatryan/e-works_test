@@ -1,10 +1,8 @@
-// styles/Header.styles.js
 import styled from "styled-components";
 import { media } from "../../assets/style/theme";
 
 export const StyledHeader = styled.header`
   width: 100%;
-  max-width: 1920px;
   margin: 0 auto;
   position: sticky;
   top: 0;
@@ -14,72 +12,82 @@ export const StyledHeader = styled.header`
   padding: 28px 0px;
 
   ${media.mobile} {
-    padding: 10px;
+    width: 100%;
   }
 `;
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr auto;
   width: 100%;
-  max-width: 1283px;
-  gap: 20px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
 
   ${media.tablet} {
-  padding: 0 20px;
-    grid-template-columns: 2fr auto;
-    gap: 10px;
+    width: 100vw;
+    min-width: 100%;
   }
-     ${media.desktop} {
-    padding: 0 20px;
+
+  ${media.largeDesktop} {
+    width: 66.82vw;
   }
 `;
 
 export const LogoContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 4%;
 `;
 
 export const Logo = styled.div`
-  display: flex;
-  gap: 8px;
-  
+    display:flex;
+    align-items:flex-end;
+    gap:9px;
+    color:rgba(70, 203, 25, 1);
+     font-family: "TT Interphases Pro Bold";
   ${media.tablet} {
     width: 100px;
   }
 `;
 
 export const Nav = styled.nav`
-  display: flex;
-  gap: 20px;
-  align-items: center;
 
-  a {
-    text-decoration: none;
+  ul {
+    display: flex;
+    gap: clamp(0px, 3vw, 38px);
+  }
+
+  li {
+    list-style-type: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     color: #fff;
     font-family: "TT Interphases Pro";
   }
 
   ${media.tablet} {
-   display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
     position: fixed;
-    top: 70px;
+    top:70px;
     left: 0;
     right: 0;
-    background: #0000009b;
-    backdrop-filter: blur(8px);
-    flex-direction: column;
+    height:100vh;
     padding: 20px;
-    height: calc(100vh - 70px);
+    background: black;
+    z-index: 2;
+    justify-content:flex-start;
+    flex-direction:column;
 
-    a {
-      font-size: 16px;
-      padding: 10px 0;
+    ul{
+    height:fit-content;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     }
   }
+ 
 `;
 
 export const Buttons = styled.div`
@@ -88,12 +96,14 @@ export const Buttons = styled.div`
   justify-content: flex-end;
 
   ${media.tablet} {
-    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
     flex-direction: column;
+    display:none;
     align-items: center;
     width: 100%;
-    margin-top:auto
-
+    margin-top: auto;
+    height:fit-content;
+    
   }
 `;
 
@@ -128,29 +138,15 @@ export const HamburgerButton = styled.button`
     order: 1;
   }
 `;
+
 export const MobileButtons = styled.div`
-display:none;
-${media.tablet}{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+  display: none;
+  ${media.tablet} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
-}
-`
-// export const MobileMenu = styled.div`
-//   display: none;
 
-//   ${media.tablet} {
-//     display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-//     flex-direction: column;
-//     position: fixed;
-//     top: 70px;
-//     left: 0;
-//     right: 0;
-//     background: #0000009b;
-//     backdrop-filter: blur(8px);
-//     padding: 20px;
-  
-//   }
-// `;
